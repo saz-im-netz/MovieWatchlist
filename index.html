@@ -17,7 +17,7 @@
         <header>
             <div class="bg"></div>
             <h1>Find your film</h1>
-            <h3>My Watchlist</h3>
+            <h3><a href="watchlist.html">My Watchlist</a></h3>
 
             <form id="search-form">
                 <img src="images/Search.png" />
@@ -30,17 +30,22 @@
         </header>
 
         <main>
-            <div class="placeholder hidden">
+            <div class="placeholder">
                 <img src="images/movie-icon.png" />
                 <h4>Start exploring</h4>
             </div>
 
+            <div class="not-found hidden">
+                <h4>Unable to find what your're looking for. Please try antother search.</h4>
+            </div>
+                
             <ul class="found-movies">
                 <!-- movies go here -->
             </ul>
             
-
-            
+            <div class="message">
+                <p>Movie added to Watchlist.</p>
+            </div>
             
         </main>
 
