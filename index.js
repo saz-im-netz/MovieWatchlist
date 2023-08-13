@@ -20,8 +20,7 @@ document.addEventListener('click', e => {
         if( e.target.id === item.imdbID || 
             e.target.id === "text-"+item.imdbID || 
             e.target.id === "plus-"+item.imdbID){
-                saveMovieToLocalStorage(item.imdbID, movieDetails); 
-                showMessageEl(); 
+                saveMovieToLocalStorage(item.imdbID, movieDetails);     
         }
     });
     
@@ -37,7 +36,7 @@ async function renderMovies(searchKey){
     try{
         // get Movie Ids => array
         const movieIds = [];
-        const response = await fetch(`http://www.omdbapi.com/?&apikey=659c6422&s=${searchKey}`);
+        const response = await fetch(`https://www.omdbapi.com/?&apikey=659c6422&s=${searchKey}`);
         const data = await response.json();
 
         data.Search.forEach( movie => {
@@ -47,7 +46,7 @@ async function renderMovies(searchKey){
         // get Movie Details => array of objects
         movieDetails = [];
         movieIds.forEach( async movie => {
-            const response = await fetch(`http://www.omdbapi.com/?&apikey=659c6422&i=${movie}`);
+            const response = await fetch(`https://www.omdbapi.com/?&apikey=659c6422&i=${movie}`);
             const data = await response.json();
             
             movieDetails.push(data);
@@ -72,6 +71,10 @@ function saveMovieToLocalStorage(movieId, movies){
 
     if(localStorage.getItem(savedMovie.imdbID) === null){
         localStorage.setItem(savedMovie.imdbID, JSON.stringify(savedMovie));
+        showMessageEl(document.getElementById('new-movie')); 
+    }
+    else{
+        showMessageEl(document.getElementById('double'));
     }
     
 
@@ -117,8 +120,7 @@ function getMovieHtml(arrayOfMovies){
     return movieListHtml;
 }
 
-function showMessageEl() {
-    const messageEl = document.querySelector(".message");
+function showMessageEl(messageEl) {
     messageEl.classList.add('show');
     setTimeout( () => { messageEl.classList.remove("show"); }, 1500);
 }
