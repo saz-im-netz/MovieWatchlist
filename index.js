@@ -29,10 +29,6 @@ document.addEventListener('click', e => {
 async function renderMovies(searchKey){
     document.querySelector('.not-found').classList.add('hidden');
 
-    // if(searchInput.value === ''){
-    //     document.querySelector('.not-found').classList.remove('hidden');
-    // }
-    // else{
     try{
         // get Movie Ids => array
         const movieIds = [];
@@ -91,11 +87,13 @@ function getMovieHtml(arrayOfMovies){
                 
             <img class="movie-poster" src="${Poster}">
             <div class="movie-descr">
-                
+
                 <div class="movie-header">
-                    <h2>${Title}</h2>
-                    <img class="star" src="images/star-icon.png">
-                    <h5>${imdbRating}</h5>
+                    <h2 class="movie-title">${Title}</h2>
+                    <div class="movie-rating">
+                        <img class="star" src="images/star-icon.png">
+                        <h5>${imdbRating}</h5>
+                    </div>
                 </div>
         
                 <div class="movie-info">
@@ -103,14 +101,13 @@ function getMovieHtml(arrayOfMovies){
                     <h5>${Genre}</h5>
                     <div id="${imdbID}" class="watchlist-btn">
                         <img src="images/plus-icon.png" class="math-icon" id="plus-${imdbID}">
-                        <h5 id="text-${imdbID}">Watchlist</h5>
+                        <h5 class="add-btn" id="text-${imdbID}">Watchlist</h5>
                     </div>
                 </div>
-        
-                <p>${Plot}</p>
-        
+                
             </div>
-        
+            <p class="movie-plot">${Plot}</p>
+            
         </li>
         
         <hr>

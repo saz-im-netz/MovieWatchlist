@@ -34,7 +34,6 @@ function getMoviesFromLocalStorage(){
 }
 
 function renderSavedMovies(){
-    document.querySelector('.saved-movies').innerHTML = '';
     let savedMoviesHtml = getSavedMovieHtml(savedMovies);
     document.querySelector('.saved-movies').innerHTML = savedMoviesHtml;
     
@@ -56,26 +55,27 @@ function getSavedMovieHtml(arrayOfMovies){
                 
             <img class="movie-poster" src="${Poster}">
             <div class="movie-descr">
-                
+
                 <div class="movie-header">
-                    <h2>${Title}</h2>
-                    <img class="star" src="images/star-icon.png">
-                    <h5>${imdbRating}</h5>
+                    <h2 class="movie-title">${Title}</h2>
+                    <div class="movie-rating">
+                        <img class="star" src="images/star-icon.png">
+                        <h5>${imdbRating}</h5>
+                    </div>
                 </div>
         
                 <div class="movie-info">
                     <h5>${Runtime}</h5>
                     <h5>${Genre}</h5>
                     <div id="${imdbID}" class="watchlist-btn">
-                        <img src="images/minus-icon.png" class="math-icon" id="minus-${imdbID}">
-                        <h5 id="text-${imdbID}">Watchlist</h5>
+                        <img src="images/plus-icon.png" class="math-icon" id="plus-${imdbID}">
+                        <h5 class="add-btn" id="text-${imdbID}">Watchlist</h5>
                     </div>
                 </div>
-        
-                <p>${Plot}</p>
-        
+                
             </div>
-        
+            <p class="movie-plot">${Plot}</p>
+            
         </li>
         
         <hr>
